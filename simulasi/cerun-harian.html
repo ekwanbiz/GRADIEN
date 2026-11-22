@@ -60,7 +60,7 @@ button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:tran
 const svg=document.getElementById('svg'),stage=document.getElementById('stage'),info=document.getElementById('info'),go=document.getElementById('go');
 const M='−',gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
 function frac(n,d){if(d<0){n=-n;d=-d}const g=gcd(Math.abs(n),d)||1;n/=g;d/=g;return(n<0?M:'')+Math.abs(n)+(d===1?'':'/'+d)}
-const SC=[{n:'🦽 Ramp',jc:1,jm:6,fill:'#4C3C1F',top:'#D2BC8A'},{n:'⛰️ Bukit',jc:4,jm:6,fill:'#3d4a1f',top:'#9bd16a'},{n:'🪜 Tangga',jc:6,jm:4,fill:'#4a2f1f',top:'#e0a46b'}];
+const SC=[{n:'🦽 Ramp',jc:1,jm:6,fill:'#4C3C1F',top:'#D2BC8A'},{n:'🪜 Tangga',jc:6,jm:4,fill:'#4a2f1f',top:'#e0a46b'}];
 let si=0,JC=1,JM=6,ball=0,anim=null,drag=false,G=null;
 const T=(x,y,t,c='#FFF6E0',s=14,w=800,a='middle')=>`<text x="${x}" y="${y}" fill="${c}" font-size="${s}" font-weight="${w}" text-anchor="${a}" dominant-baseline="middle" font-family="Arial" paint-order="stroke" stroke="#17120B" stroke-width="4">${t}</text>`;
 function draw(){const w=stage.clientWidth||300,h=stage.clientHeight||300;svg.setAttribute('viewBox',`0 0 ${w} ${h}`);
@@ -68,7 +68,7 @@ function draw(){const w=stage.clientWidth||300,h=stage.clientHeight||300;svg.set
  let g='';for(let i=0;i<=10;i++)g+=`<line x1="${X(i)}" y1="${Y(0)}" x2="${X(i)}" y2="${Y(8.4)}" stroke="#ffffff08"/>`;for(let j=0;j<=8;j++)g+=`<line x1="${X(0)}" y1="${Y(j)}" x2="${X(10.4)}" y2="${Y(j)}" stroke="#ffffff08"/>`;
  const S=SC[si];
  g+=`<path d="M${X(0)} ${Y(0)}L${X(JM)} ${Y(0)}L${X(JM)} ${Y(JC)}Z" fill="${S.fill}"/>`;
- if(si===2&&JC>0){let d='';const n=Math.max(2,JM);for(let k=0;k<n;k++){const x0=JM*k/n,x1=JM*(k+1)/n,y1=JC*(k+1)/n;d+=`M${X(x0)} ${Y(JC*k/n)}V${Y(y1)}H${X(x1)}`}g+=`<path d="${d}" fill="none" stroke="${S.top}" stroke-width="3"/>`}
+ if(si===1&&JC>0){let d='';const n=Math.max(2,JM);for(let k=0;k<n;k++){const x0=JM*k/n,x1=JM*(k+1)/n,y1=JC*(k+1)/n;d+=`M${X(x0)} ${Y(JC*k/n)}V${Y(y1)}H${X(x1)}`}g+=`<path d="${d}" fill="none" stroke="${S.top}" stroke-width="3"/>`}
  g+=`<line x1="${X(-0.6)}" y1="${Y(0)}" x2="${X(10.6)}" y2="${Y(0)}" stroke="#D2BC8A" stroke-width="3"/>`;
  g+=`<line x1="${X(0)}" y1="${Y(0)}" x2="${X(JM)}" y2="${Y(JC)}" stroke="#FFC93C" stroke-width="6" stroke-linecap="round"/>`;
  // jarak mencancang & mengufuk
